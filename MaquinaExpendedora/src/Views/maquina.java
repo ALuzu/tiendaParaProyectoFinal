@@ -4,7 +4,7 @@ package Views;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /*
@@ -25,10 +25,10 @@ public class maquina extends javax.swing.JFrame {
     public maquina() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.rellenar(this.cocaCola,"src/imagenes/cocacola1.jpg");
-        this.rellenar(this.jugo,"src/imagenes/jugo1.jpg");
-        this.rellenar(this.galletas,"src/imagenes/galletas1.jpeg");
-        this.rellenar(this.papas,"src/imagenes/papas.jpeg");
+        this.rellenar(this.fotoCoca,"src/imagenes/cocacola1.jpg");
+        this.rellenar(this.fotoJugo,"src/imagenes/jugo1.jpg");
+        this.rellenar(this.fotoGalletas,"src/imagenes/galletas1.jpeg");
+        this.rellenar(this.fotoPapas,"src/imagenes/papas.jpeg");
        }
 
     @SuppressWarnings("unchecked")
@@ -42,10 +42,18 @@ public class maquina extends javax.swing.JFrame {
         pago = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         dineroTotal = new javax.swing.JTextField();
-        jugo = new javax.swing.JButton();
-        cocaCola = new javax.swing.JButton();
-        galletas = new javax.swing.JButton();
-        papas = new javax.swing.JButton();
+        jSpinner1 = new javax.swing.JSpinner();
+        fotoPapas = new javax.swing.JLabel();
+        fotoCoca = new javax.swing.JLabel();
+        fotoGalletas = new javax.swing.JLabel();
+        fotoJugo = new javax.swing.JLabel();
+        jSpinner2 = new javax.swing.JSpinner();
+        jSpinner3 = new javax.swing.JSpinner();
+        jSpinner4 = new javax.swing.JSpinner();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,7 +66,7 @@ public class maquina extends javax.swing.JFrame {
                 adminActionPerformed(evt);
             }
         });
-        jPanel1.add(admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 440, -1, -1));
+        jPanel1.add(admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 470, -1, -1));
 
         Salir.setText("Salir");
         Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -66,10 +74,10 @@ public class maquina extends javax.swing.JFrame {
                 SalirActionPerformed(evt);
             }
         });
-        jPanel1.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, -1, -1));
+        jPanel1.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 470, -1, -1));
 
         jLabel2.setText("Bienvenido, Eliga su producto");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 180, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 180, 30));
 
         pago.setText("REALIZAR PAGO");
         pago.addActionListener(new java.awt.event.ActionListener() {
@@ -77,57 +85,53 @@ public class maquina extends javax.swing.JFrame {
                 pagoActionPerformed(evt);
             }
         });
-        jPanel1.add(pago, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, -1, -1));
+        jPanel1.add(pago, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, -1, -1));
 
         jLabel1.setText("Ingrese el dinero");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 160, 30));
-        jPanel1.add(dineroTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 200, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 160, 30));
+        jPanel1.add(dineroTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 200, -1));
+        jPanel1.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, 110, -1));
 
-        jugo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/jugo1.jpg"))); // NOI18N
-        jugo.setToolTipText("Jugo - $0.45");
-        jugo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jugoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jugo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 150, 130));
+        fotoPapas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/papas.jpeg"))); // NOI18N
+        fotoPapas.setToolTipText("Papas - $1,00");
+        jPanel1.add(fotoPapas, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 120, 110));
 
-        cocaCola.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cocacola1.jpg"))); // NOI18N
-        cocaCola.setToolTipText("Coca Cola - $0.50");
-        cocaCola.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cocaColaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(cocaCola, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 150, 130));
+        fotoCoca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cocacola1.jpg"))); // NOI18N
+        fotoCoca.setToolTipText("Coca Cola - $0.50");
+        jPanel1.add(fotoCoca, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 120, 110));
 
-        galletas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/galletas1.jpeg"))); // NOI18N
-        galletas.setToolTipText("Galletas - $0.65");
-        galletas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                galletasActionPerformed(evt);
-            }
-        });
-        jPanel1.add(galletas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 150, 130));
+        fotoGalletas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/galletas1.jpeg"))); // NOI18N
+        fotoGalletas.setToolTipText("Galletas - $0.65");
+        jPanel1.add(fotoGalletas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 120, 110));
 
-        papas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/papas.jpeg"))); // NOI18N
-        papas.setToolTipText("Papas - $1.00");
-        papas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                papasActionPerformed(evt);
-            }
-        });
-        jPanel1.add(papas, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 150, 130));
+        fotoJugo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/jugo1.jpg"))); // NOI18N
+        fotoJugo.setToolTipText("Jugo - $0.35");
+        jPanel1.add(fotoJugo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 120, 110));
+        jPanel1.add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 110, -1));
+        jPanel1.add(jSpinner3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 110, -1));
+        jPanel1.add(jSpinner4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 110, -1));
+
+        jLabel3.setText("Coca Cola - $0.50");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+
+        jLabel4.setText("Jugo - $0.35");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, -1));
+
+        jLabel5.setText("Galletas - $0.60");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
+
+        jLabel6.setText("Papas - $1.00");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
         );
 
         pack();
@@ -204,26 +208,6 @@ public class maquina extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_pagoActionPerformed
 
-    private void cocaColaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cocaColaActionPerformed
-        producto=producto+1;
-        boton=1;
-    }//GEN-LAST:event_cocaColaActionPerformed
-
-    private void jugoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jugoActionPerformed
-        producto=producto+1;
-        boton=2;
-    }//GEN-LAST:event_jugoActionPerformed
-
-    private void galletasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_galletasActionPerformed
-        producto=producto+1;
-        boton=3;
-    }//GEN-LAST:event_galletasActionPerformed
-
-    private void papasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_papasActionPerformed
-        producto=producto+1;
-        boton=4;
-    }//GEN-LAST:event_papasActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -259,7 +243,7 @@ public class maquina extends javax.swing.JFrame {
         });
     }
 
-    private void rellenar(JButton button, String ruta){
+    private void rellenar(JLabel button, String ruta){
         this.imagen = new ImageIcon(ruta);
         this.icono = new ImageIcon(this.imagen.getImage().getScaledInstance(button.getWidth(), button.getHeight(), Image.SCALE_DEFAULT));
         button.setIcon(this.icono);
@@ -269,14 +253,22 @@ public class maquina extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Salir;
     private javax.swing.JButton admin;
-    private javax.swing.JButton cocaCola;
     private javax.swing.JTextField dineroTotal;
-    private javax.swing.JButton galletas;
+    private javax.swing.JLabel fotoCoca;
+    private javax.swing.JLabel fotoGalletas;
+    private javax.swing.JLabel fotoJugo;
+    private javax.swing.JLabel fotoPapas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton jugo;
+    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JSpinner jSpinner2;
+    private javax.swing.JSpinner jSpinner3;
+    private javax.swing.JSpinner jSpinner4;
     private javax.swing.JButton pago;
-    private javax.swing.JButton papas;
     // End of variables declaration//GEN-END:variables
 }
