@@ -23,6 +23,7 @@ public class maquina extends javax.swing.JFrame {
         
     public maquina() {
         initComponents();
+        botonTransparente();
         this.setLocationRelativeTo(null);
         this.rellenar(this.fotoCoca,"src/imagenes/cocacola1.jpg");
         this.rellenar(this.fotoJugo,"src/imagenes/jugo1.jpg");
@@ -35,7 +36,6 @@ public class maquina extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        Salir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         pago = new javax.swing.JButton();
         dineroTotal = new javax.swing.JTextField();
@@ -61,19 +61,12 @@ public class maquina extends javax.swing.JFrame {
         pfinalPapas = new javax.swing.JLabel();
         pFinal = new javax.swing.JLabel();
         precioFinal = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 255, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Salir.setText("Salir");
-        Salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalirActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
 
         jLabel2.setText("Welcome! Choose you product");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 180, 30));
@@ -84,10 +77,10 @@ public class maquina extends javax.swing.JFrame {
                 pagoActionPerformed(evt);
             }
         });
-        jPanel1.add(pago, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 370, -1, -1));
+        jPanel1.add(pago, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 350, -1, -1));
 
         dineroTotal.setBorder(javax.swing.BorderFactory.createTitledBorder("Add the payment amount"));
-        jPanel1.add(dineroTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 360, 200, -1));
+        jPanel1.add(dineroTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 340, 200, -1));
 
         cantidadPapas.setModel(new javax.swing.SpinnerNumberModel(0.0f, 0.0f, null, 1.0f));
         jPanel1.add(cantidadPapas, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 110, -1));
@@ -178,7 +171,7 @@ public class maquina extends javax.swing.JFrame {
         jPanel1.add(pfinalPapas, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 220, 240, 50));
 
         pFinal.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Total Price"));
-        jPanel1.add(pFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 290, 180, 50));
+        jPanel1.add(pFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, 180, 50));
 
         precioFinal.setText("TOTAL");
         precioFinal.addActionListener(new java.awt.event.ActionListener() {
@@ -188,73 +181,27 @@ public class maquina extends javax.swing.JFrame {
         });
         jPanel1.add(precioFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, -1, -1));
 
+        salir.setToolTipText("EXIT");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 70, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 996, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-        int salir = JOptionPane.showConfirmDialog(null, "CONFIRM EXIT?", "Confirm", JOptionPane.YES_NO_OPTION);
-        if (salir==JOptionPane.YES_NO_OPTION){
-        masterPassword newframe = new masterPassword();
-        newframe.setVisible(true);
-        this.dispose();
-        }
-    }//GEN-LAST:event_SalirActionPerformed
-
-    private void pagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagoActionPerformed
-        float total, cambio;
-        float efectivo;
-        total = Float.parseFloat(pFinal.getText());
-        efectivo = Float.parseFloat(dineroTotal.getText());
-        if (efectivo>=total) {
-        cambio=efectivo-total;
-    } else {
-        do {                
-            efectivo=Float.parseFloat(JOptionPane.showInputDialog(null, "Enter an amount higher or equal to: "+total));
-        } while (efectivo<=efectivo-total);
-        cambio=efectivo-total;
-    }
-        JOptionPane.showMessageDialog(null, """
-                                         ------- BILL ------- 
-                                         TOTAL AMOUNT \t"""+efectivo
-                                         + "\n TO PAY "+total
-                                       + "\n CHANGE "+cambio);
-        limpiar();
-    }//GEN-LAST:event_pagoActionPerformed
-
-    private void agregarCocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarCocaActionPerformed
-        float valor =  (float) cantidadCoca.getValue();
-        float total = valor * 0.5f;
-        pfinalCoca.setText(String.valueOf(total));
-    }//GEN-LAST:event_agregarCocaActionPerformed
-
-    private void agregarJugoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarJugoActionPerformed
-        float valor =  (float) cantidadJugo.getValue();
-        float total = valor * 0.35f;
-        pfinalJugo.setText(String.valueOf(total));
-    }//GEN-LAST:event_agregarJugoActionPerformed
-
-    private void agregarGalletasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarGalletasActionPerformed
-        float valor =  (float) cantidadGalletas.getValue();
-        float total = valor * 0.60f;
-        pfinalGalletas.setText(String.valueOf(total));
-    }//GEN-LAST:event_agregarGalletasActionPerformed
-
-    private void agregarPapasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPapasActionPerformed
-        float valor =  (float) cantidadPapas.getValue();
-        float total = valor * 1.00f;
-        pfinalPapas.setText(String.valueOf(total));
-    }//GEN-LAST:event_agregarPapasActionPerformed
 
     private void precioFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioFinalActionPerformed
         float pCoca, pJugo, pGalletas, pPapas;
@@ -266,6 +213,60 @@ public class maquina extends javax.swing.JFrame {
         total = pCoca + pJugo + pGalletas + pPapas;
         pFinal.setText(String.valueOf(total));
     }//GEN-LAST:event_precioFinalActionPerformed
+
+    private void agregarPapasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPapasActionPerformed
+        float valor =  (float) cantidadPapas.getValue();
+        float total = valor * 1.00f;
+        pfinalPapas.setText(String.valueOf(total));
+    }//GEN-LAST:event_agregarPapasActionPerformed
+
+    private void agregarGalletasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarGalletasActionPerformed
+        float valor =  (float) cantidadGalletas.getValue();
+        float total = valor * 0.60f;
+        pfinalGalletas.setText(String.valueOf(total));
+    }//GEN-LAST:event_agregarGalletasActionPerformed
+
+    private void agregarJugoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarJugoActionPerformed
+        float valor =  (float) cantidadJugo.getValue();
+        float total = valor * 0.35f;
+        pfinalJugo.setText(String.valueOf(total));
+    }//GEN-LAST:event_agregarJugoActionPerformed
+
+    private void agregarCocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarCocaActionPerformed
+        float valor =  (float) cantidadCoca.getValue();
+        float total = valor * 0.5f;
+        pfinalCoca.setText(String.valueOf(total));
+    }//GEN-LAST:event_agregarCocaActionPerformed
+
+    private void pagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagoActionPerformed
+        float total, cambio;
+        float efectivo;
+        total = Float.parseFloat(pFinal.getText());
+        efectivo = Float.parseFloat(dineroTotal.getText());
+        if (efectivo>=total) {
+            cambio=efectivo-total;
+        } else {
+            do {
+                efectivo=Float.parseFloat(JOptionPane.showInputDialog(null, "Enter an amount higher or equal to: "+total));
+            } while (efectivo<=efectivo-total);
+            cambio=efectivo-total;
+        }
+        JOptionPane.showMessageDialog(null, """
+            ------- BILL -------
+            TOTAL AMOUNT \t"""+efectivo
+            + "\n TO PAY "+total
+            + "\n CHANGE "+cambio);
+        limpiar();
+    }//GEN-LAST:event_pagoActionPerformed
+
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        int salir = JOptionPane.showConfirmDialog(null, "CONFIRM EXIT?", "Confirm", JOptionPane.YES_NO_OPTION);
+        if (salir==JOptionPane.YES_NO_OPTION){
+            masterPassword newframe = new masterPassword();
+            newframe.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_salirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -302,7 +303,11 @@ public class maquina extends javax.swing.JFrame {
         });
     }
 
-    
+    public void botonTransparente(){
+        salir.setOpaque(false);
+        salir.setContentAreaFilled(false);
+        salir.setBorderPainted(false);
+    }
     public void limpiar(){
         this.dineroTotal.setText(null);
         this.pfinalCoca.setText(null);
@@ -319,7 +324,6 @@ public class maquina extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Salir;
     private javax.swing.JButton agregarCoca;
     private javax.swing.JButton agregarGalletas;
     private javax.swing.JButton agregarJugo;
@@ -346,5 +350,6 @@ public class maquina extends javax.swing.JFrame {
     private javax.swing.JLabel pfinalJugo;
     private javax.swing.JLabel pfinalPapas;
     private javax.swing.JButton precioFinal;
+    private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }

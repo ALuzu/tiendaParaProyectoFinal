@@ -10,14 +10,13 @@ import javax.swing.JOptionPane;
  *
  * @author Andrés Luzuriaga
  */
-public class login extends javax.swing.JFrame {
+public class adminLogin extends javax.swing.JFrame {
 
     /**
-     * Creates new form login
+     * Creates new form adminLogin
      */
-    public login() {
+    public adminLogin() {
         initComponents();
-        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -84,7 +83,7 @@ public class login extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,8 +98,8 @@ public class login extends javax.swing.JFrame {
         usuario=Usuario.getText();
         contrasena=contra.getText();
         if (usuario.equals("aluzu12")&& contrasena.equals("12345")) {
-            admin acceso=new admin();
-            acceso.setVisible(true);
+            maquina miMaquina = new maquina();
+            miMaquina.setVisible(true);
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(null, "Wrong User or Password");
@@ -110,7 +109,7 @@ public class login extends javax.swing.JFrame {
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         int salir = JOptionPane.showConfirmDialog(null, "Confirm Exit?", "Confirma", JOptionPane.YES_NO_OPTION);
         if (salir==JOptionPane.YES_NO_OPTION){
-        System.exit(0);
+            System.exit(0);
         }
     }//GEN-LAST:event_salirActionPerformed
 
@@ -131,20 +130,20 @@ public class login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(adminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(adminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(adminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(adminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new login().setVisible(true);
+                new adminLogin().setVisible(true);
             }
         });
     }
