@@ -35,8 +35,9 @@ public class login extends javax.swing.JFrame {
         Usuario = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         contra = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        ingresa = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,18 +59,26 @@ public class login extends javax.swing.JFrame {
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, -1, -1));
         jPanel1.add(contra, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 290, -1));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setText("INGRESAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ingresa.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        ingresa.setText("ENTER");
+        ingresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ingresaActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, -1, -1));
+        jPanel1.add(ingresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, -1, -1));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        salir.setText("EXIT");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 80, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,7 +94,7 @@ public class login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ingresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresaActionPerformed
         String usuario, contrasena;
         usuario=Usuario.getText();
         contrasena=contra.getText();
@@ -94,9 +103,16 @@ public class login extends javax.swing.JFrame {
             acceso.setVisible(true);
             this.setVisible(false);
         } else {
-            JOptionPane.showMessageDialog(null, "Error en el Usuario o Contraseña");
+            JOptionPane.showMessageDialog(null, "Wrong User or Password");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ingresaActionPerformed
+
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        int salir = JOptionPane.showConfirmDialog(null, "Confirm Exit?", "Confirma", JOptionPane.YES_NO_OPTION);
+        if (salir==JOptionPane.YES_NO_OPTION){
+        System.exit(0);
+        }
+    }//GEN-LAST:event_salirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,11 +152,12 @@ public class login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Usuario;
     private javax.swing.JPasswordField contra;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton ingresa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }
